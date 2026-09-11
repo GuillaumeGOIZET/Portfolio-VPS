@@ -408,5 +408,34 @@
         >
       </div>
     </footer>
+    <!-- BURGER MENU -->
+    <script>
+      const burger = document.querySelector(".burger");
+      const header = document.querySelector("header");
+      const menuLinks = document.querySelectorAll("header nav a");
+
+      if (burger && header) {
+        burger.addEventListener("click", () => {
+          const isOpen = header.classList.toggle("menu-open");
+
+          burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+          burger.setAttribute(
+            "aria-label",
+            isOpen ? "Fermer le menu" : "Ouvrir le menu",
+          );
+        });
+
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            header.classList.remove("menu-open");
+
+            burger.setAttribute("aria-expanded", "false");
+
+            burger.setAttribute("aria-label", "Ouvrir le menu");
+          });
+        });
+      }
+    </script>
   </body>
 </html>
